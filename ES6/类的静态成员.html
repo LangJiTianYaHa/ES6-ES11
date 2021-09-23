@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>静态成员</title>
+</head>
+<body>
+    <script>
+        // function Phone(){
+
+        // }
+        // Phone.name = '手机';
+        // Phone.change = function(){
+        //     console.log("我可以改变世界");
+        // }
+        // Phone.prototype.size = '5.5inch';
+
+        // let nokia = new Phone();
+
+        // console.log(nokia.name);
+        // // nokia.change();
+        // console.log(nokia.size);
+
+        /* class Phone{
+            //静态属性
+            static name = '手机';
+            static change(){
+                console.log("我可以改变世界");
+            }
+        }
+
+        let nokia = new Phone();
+        console.log(nokia.name);  //undefined
+        console.log(Phone.name);  //手机
+        console.log(Phone.change()) */
+
+        //如果在一个方法前，加上static关键字，就表示该方法不会被实例继承，
+        //而是直接通过类来调用，这就称为“静态方法”
+        /* class Father{
+            static testMehhod() {
+                return 'hello'
+            }
+        }
+        console.log(Father.testMehhod())   //hello
+        let  Child = new Father()
+       // Child.testMehhod()       //TypeError: Child.testMehhod is not a function
+         */
+
+       //父类的静态方法，可以被子类继承。
+       class Father {
+           static testMethod(){
+               return 'hello world'
+           }
+       }
+        class Child extends Father{
+
+        }
+        console.log(Child.testMethod()) 
+
+
+
+
+    </script>
+</body>
+</html>

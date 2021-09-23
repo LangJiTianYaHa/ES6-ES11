@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>迭代器</title>
+
+
+</head>
+
+<body>
+    <script>
+        //声明一个数组
+        const xiyou = ['唐僧', '孙悟空', '猪八戒', '沙僧']
+        //使用for of 循环遍历
+        for (let v of xiyou) {
+            console.log(v)
+
+        }
+
+        let iterator = xiyou[Symbol.iterator]();
+
+        //调用对象的next 方法
+        console.log(iterator.next())
+        console.log(iterator.next())
+        console.log(iterator.next())
+        console.log(iterator.next())
+
+        console.log('以下是for循环举例')
+
+
+        //传统for循环
+        //依次打印0A，1B，2C
+        /*  let array = ["A", "B", "C"];
+         for (let index = 0; index < array.length; index++) {
+             console.log(index);
+             console.log(array[index]);
+         } */
+
+        //for each，适合既需要使用index，又需要使用value的情景
+        //依次打印0A，1B，2C
+        /* let array = ["A", "B", "C"];
+        array.forEach((item, index) => {
+            console.log(index);
+            console.log(item);
+        }); */
+
+        //for in 遍历枚举
+        /* let myMap = {
+            uno: 1,
+            dos: 2,
+            tres: 3
+        }
+        for (let key in myMap) {
+            console.log(key, "=", myMap[key]);
+        } */
+
+        //forEach 用于处理数组对象
+        //接收3个参数 elem（元素） index（索引） arr(实际数组)
+        let a = ["hello", "world"]
+        a.forEach((elem, index, arr) => {
+            console.log(elem, "at: ", index, "inside: ", arr)
+        })
+
+
+
+
+
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promise封装Ajax</title>
+</head>
+
+<body>
+
+    <script>
+
+
+        
+
+
+
+
+        // 接口地址: https://api.apiopen.top/getJoke
+        const p = new Promise((resolve, reject) => {
+            //1.创建对象
+            const xhr = new XMLHttpRequest()
+
+            //2.初始化
+            xhr.open('GET', 'https://api.apiopen.top/getJoke')
+
+            //3.发送
+            xhr.send()
+
+            //4.绑定事件  处理响应结果
+            xhr.onreadystatechange = function () {
+                //0：请求未初始化（还没有调用 open()）。
+                // 1：请求已经建立，但是还没有发送（还没有调用 send()）。
+                // 2：请求已发送，正在处理中（通常现在可以从响应中获取内容头）。
+                // 3：请求在处理中；通常响应中已有部分数据可用了，但是服务器还没有完成响应的生成。
+                // 4：响应已完成；您可以获取并使用服务器的响应了。
+                //判断
+                if (xhr.readyState === 4) {
+                    //判断响应状态码 200-299
+                    if (xhr.status >= 200 && xhr.status < 300) {
+                        resolve(xhr.response)
+                    } else {
+                        reject(xhr.status)
+                    }
+                }
+
+            }
+        })
+
+        //指定回调
+        p.then(function (value) {
+            console.log(value)
+
+        }, function (reason) {
+            console.error(reason)
+        })
+
+    </script>
+
+</body>
+
+</html>
