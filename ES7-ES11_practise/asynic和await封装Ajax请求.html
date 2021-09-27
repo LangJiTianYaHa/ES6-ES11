@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        //发送URL 返回promise对象
+        // https://www.tianqiapi.com/api/?version=v1&city=%E5%8C%97%E4%BA%AC&appid=23941491&appsecret=TXoD5e8P
+
+        function senAjax(url) {
+            return new Promise((resolve, reject) => {
+                let xhr = new XMLHttpRequest()
+
+                xhr.open("GET", url)
+
+                xhr.send()
+
+                //事件绑定
+                xhr.onreadystatechange = () => {
+                    if (xhr.readyState != 4) {
+                        return
+
+                    }
+                    if (xhr.status >= 200 && xhr.status <= 299) {
+                        resolve(xhr.response)
+                    } else {
+                        reject(xhr.status)
+                    }
+                }
+
+            })
+        }
+
+
+        // async 测试
+        async function main() {
+            let res = await senAjax('https://www.tianqiapi.com/api/?version=v1&city=%E5%8C%97%E4%BA%AC&appid=23941491&appsecret=TXoD5e8P')
+
+            console.log(res)
+
+
+        }
+        main()
+    </script>
+</body>
+
+</html>

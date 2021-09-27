@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>正则命名分组</title>
+</head>
+
+<body>
+    <script>
+        let str = '<a href="http://www.atguigu.com">尚硅谷</a>'
+
+        // const reg = /<a href="(?<url>.*)"(?<text>.*)></a >/
+
+        const reg = /<a href="(?<url>.*)">(?<text>.*)<\/a>/;
+        const result = reg.exec(str)
+
+        console.log(result)
+        console.log(result.groups.url);
+        console.log(result.groups.text)
+
+    </script>
+
+</body>
+
+</html>
